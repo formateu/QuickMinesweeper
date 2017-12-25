@@ -9,6 +9,7 @@ Rectangle {
     color: "lightgray"
     Layout.fillHeight: true
     Layout.fillWidth: true
+    antialiasing: true
     property alias img: btnImg
     property alias txt: cnt
     //game logic
@@ -16,9 +17,6 @@ Rectangle {
     property int xPos: 0
     property int yPos: 0
     property int neighbourMines: 0
-    signal revealNeighbours(int xPos, int yPos)
-    signal gameWon()
-    signal gameOver()
 
     Text {
         id: cnt
@@ -35,33 +33,6 @@ Rectangle {
         id: btnImg
         anchors.fill: parent
         //smooth: true <- set by default
-    }
-
-    MouseArea {
-        id: mouseArea
-        acceptedButtons: Qt.LeftButton | Qt.RightButton
-        anchors.fill: parent
-        onClicked: {
-            if (fieldButton.state == '' && mouse.button & Qt.LeftButton) {
-                if (fieldButton.mine) {
-                    fieldButton.state = 'discoveredMine';
-                    fieldButton.gameOver();
-                } else {
-                    fieldButton.state = 'discovered';
-                    fieldButton.revealNeighbours(xPos, yPos);
-                }
-            } else if (mouse.button & Qt.RightButton) {
-                flipFlag();
-            }
-        }
-
-        function flipFlag() {
-            if (fieldButton.state == '') {
-                fieldButton.state = 'flag';
-            } else if (fieldButton.state == 'flag') {
-                fieldButton.state = '';
-            }
-        }
     }
 
     states: [
@@ -88,7 +59,7 @@ Rectangle {
         Transition {
             PropertyAnimation {
                 properties: "color, img.source, txt";
-                easing.type: Easing.InExpo;
+                easing.type: Easing.InSine;
                 duration: 100
             }
         }
