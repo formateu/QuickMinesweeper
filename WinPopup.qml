@@ -40,14 +40,7 @@ Dialog {
     height: width
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
-    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+    closePolicy: Popup.NoAutoClose
 
-    contentItem: Text {
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        //anchors.fill: parent
-        color: "green"
-        font.pixelSize: 0.1 * gameOverPopup.height
-        text: "Contratulations!!\n You WIN!!!"
-    }
+
 }

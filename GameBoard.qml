@@ -28,12 +28,28 @@ GridLayout {
     property int flagCount: 0
     property int fieldsRemaining: 0
 
-    GameOverPopup {
+    ResultDialog {
         id: gameOverPopup
+        title: "Game Over"
+        contentItem: Text {
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            color: "darkred"
+            font.pixelSize: 0.1 * gameOverPopup.height
+            text: "You have lost!"
+        }
     }
 
-    WinPopup {
+    ResultDialog {
         id: gameWinPopup
+        title: "Congratulations!!"
+        contentItem: Text {
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            color: "green"
+            font.pixelSize: 0.1 * gameOverPopup.height
+            text: "Contratulations!!\n You WIN!!!"
+        }
     }
 
     Repeater {
