@@ -25,26 +25,41 @@ ApplicationWindow {
                 }
             }
             Menu {
-                title: "Size..."
+                title: "Difficulty..."
                 MenuItem {
-                    text: "10x10";
+                    text: "Very easy 8x8";
+                    onTriggered: {
+                        stack.pop(board);
+                        stack.push({item: board, properties: {columns: 8}});
+                    }
+                }
+                MenuItem {
+                    text: "Easy 10x10";
                     onTriggered: {
                         stack.pop(board);
                         stack.push({item: board, properties: {columns: 10}});
                     }
                 }
                 MenuItem {
-                    text: "13x13";
+                    text: "Medium 13x13";
                     onTriggered: {
                         stack.pop(board);
                         stack.push({item: board, properties: {columns: 13}});
                     }
                 }
                 MenuItem {
-                    text: "19x19";
+                    text: "Hard 19x19";
                     onTriggered: {
                         stack.pop(board);
                         stack.push({item: board, properties: {columns: 19}});
+                    }
+                }
+
+                MenuItem {
+                    text: "Crazy 30x30";
+                    onTriggered: {
+                        stack.pop(board);
+                        stack.push({item: board, properties: {columns: 30}});
                     }
                 }
             }
